@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#070812;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Background */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.35;
+    animation:float 14s ease-in-out infinite;
+}
+
+.glow1{
+    width:420px;
+    height:420px;
+    background:#6d5cff;
+    top:-80px;
+    left:-100px;
+}
+
+.glow2{
+    width:360px;
+    height:360px;
+    background:#3dd9ff;
+    bottom:-80px;
+    right:-80px;
+    animation-delay:-5s;
+}
+
+.glow3{
+    width:260px;
+    height:260px;
+    background:#7a8cff;
+    top:45%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation-delay:-9s;
+}
+
+/* Content */
+
+.container{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:2rem;
+    text-align:center;
+}
+
+h1{
+    font-size:clamp(3rem,8vw,5.5rem);
+    font-weight:700;
+    letter-spacing:-2px;
+    margin-bottom:.6rem;
+    opacity:0;
+    transform:translateY(20px);
+}
+
+.subtitle{
+    color:#b7bdd6;
+    margin-bottom:2.5rem;
+    font-size:1rem;
+    opacity:0;
+    transform:translateY(20px);
+}
+
+.player-card{
+    width:min(100%,560px);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-radius:28px;
+    padding:16px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    opacity:0;
+    transform:translateY(30px);
+    transition:transform .35s ease, box-shadow .35s ease;
+}
+
+.player-card:hover{
+    transform:translateY(-6px);
+    box-shadow:
+        0 25px 70px rgba(61,217,255,.12),
+        0 20px 60px rgba(109,92,255,.18);
+}
+
+/* Animations */
+
+@keyframes float{
+    0%,100%{
+        transform:translate(0,0) scale(1);
+    }
+    50%{
+        transform:translate(30px,-20px) scale(1.08);
+    }
+}
+
+.fade-in{
+    animation:fadeUp .9s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(24px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:600px){
+
+    .player-card{
+        padding:12px;
+    }
+
+    iframe{
+        height:420px;
+    }
+}
